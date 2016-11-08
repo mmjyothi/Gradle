@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group=project.groupId
+version = '1.2'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+			        }
+    }
+}
+publishing {
+    repositories {
+        maven {
+            credentials{
+			 username "xxxx"
+			 password "xxxxx"
+			}
+			url publishUrl
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = project.gradleVersion
+}
+
